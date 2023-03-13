@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="mystyle.css" />
+	<title></title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+</head>
+<body>
+
+  <section id="nav">
+    <div class="wrapper">
+        <nav class="site-nav">
+          <div >
+            <h1 class="logo">
+              <img src="logo.png" alt="Smiley face" width="200" height="150" style="vertical-align:middle">University Of Gondar</p>
+            </div>
+            <div class="menu-toggle">
+            <div class="hamburger"></div>
+            </div>
+                   
+            <ul class="open desktop">
+              <li><a href="/" id="one"><i class="fas fa-home site-nav--icon"></i>Home</a></li>
+              <li><a href="/data"><i class="fas fa-globe site-nav--icon"></i>Report</a></li>
+              <li><a href="/login"><i class="fas fa-users site-nav--icon"></i>login</a></li>
+              <li><a href="/register"><i class="fas fa-download site-nav--icon"></i>signup</a></li>
+              <li><a href="#!"><i class="fas fa-phone site-nav--icon"></i>About</a></li>
+            </ul>
+       </nav>
+    </div>   
+</section>
+<h2>Report Dashboard</h2>
+<canvas id="myChart" style="width:100%;max-width:600px"></canvas>
+
+<script>
+var xValues = ["computer", "electrical", "biomedical", "cotm", "chemical","civil","archtectu"];
+var yValues = [19, 49, 44, 24, 36,20,30,];
+var barColors = ["red", "green","blue","orange","brown","black","gray"];
+
+new Chart("myChart", {
+  type: "bar",
+  data: {
+    labels: xValues,
+    datasets: [{
+      backgroundColor: barColors,
+      data: yValues
+    }]
+  },
+  options: {
+    legend: {display: false},
+    title: {
+      display: true,
+      text: "World Wine Production 2018"
+    }
+  }
+});
+</script>
+
+		<div class="abc">
+			<a href="/logout">Logout</a>
+		</div>
+	</div>
+</body>
+</html>
+
+  <script>
+	// Get the side bar element
+	var sidebar = document.getElementById("sidebar");
+  
+	// Get the toggle button element
+	var toggleBtn = document.getElementById("toggle-btn");
+  
+	// Add a click event listener to the toggle button
+	toggleBtn.addEventListener("click", function() {
+	  // Toggle the "active" class on the side bar
+	  sidebar.classList.toggle("active");
+	});
+  </script>
+  

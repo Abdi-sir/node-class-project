@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="mystyle.css" />
+	<title>Forget Password</title>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+	</script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="./css/main.css">
+
+	<script type="text/javascript">
+		$(document).ready(function(){
+
+			$( "#form2" ).submit(function(event) {
+
+				event.preventDefault();
+
+				$.ajax({
+					type: 'POST',
+					url: '/forgetpass',
+					data: $('#form2').serialize(),
+					dataType: "json",
+					success: function(response){
+						//alert("a");
+						//console.log(response.Success);
+						$('#form2')[0].reset();
+						//alert("abc");
+						document.getElementById("check").innerHTML=response.Success;
+
+						setTimeout(function(){
+							document.getElementById("check").innerHTML="";
+						},3000);
+						if (response.Success=="Password changed!") {
+							document.getElementById("aa").click();
+						};
+					},
+					error: function() {
+					}
+				})
+			});
+
+		});
+	</script>
+</head>
+<body>
+	<div >
+		<h1 class="logo">
+		  <img src="logo.png" alt="Smiley face" width="200" height="150" style="vertical-align:middle">University Of Gondar</p>
+	  </div>
+	<section id="nav">
+		<div class="wrapper">
+			<nav class="site-nav">
+		  <h1 class="logo">University of <span>Gondar</span></h1>
+				<div class="menu-toggle">
+				<div class="hamburger"></div>
+				</div>
+					   
+			  <ul class="open desktop">
+				<li><a href="/" id="one"><i class="fas fa-home site-nav--icon"></i>Home</a></li>
+				<li><a href="/add_user"><i class="fas fa-globe site-nav--icon"></i>project</a></li>
+				<li><a href="/login"><i class="fas fa-users site-nav--icon"></i>login</a></li>
+				<li><a href="/register"><i class="fas fa-download site-nav--icon"></i>signup</a></li>
+				<li><a href="#!"><i class="fas fa-phone site-nav--icon"></i>About</a></li>
+			  </ul>
+		   </nav>
+		</div>   
+	</section>
+	
+		<div class="">
+			<div>
+				
+			</div>
+			<div class="create-blog content">
+				<form id="form2" method="post"><p>Change Password</p>
+					<input type="text" name="email" placeholder="E-mail" required="" class="form-control"><br/>
+					<input type="password" name="password" placeholder="Password" required="" class="form-control"><br/>
+					<input type="password" name="passwordConf" placeholder="Confirm Password" required="" class="form-control"><br/>
+					<input type="submit" value="Change" class="btn btn-success">
+				</form>
+			</div><center>
+				<div  class="mssg bg-danger">
+				<span id="check"></span>
+				</div>
+				<div id="LangTable"><a href="/profile" id="aa"></a>
+				</div>
+				<div><span>Login?</span><a href="/login">Click here</a></div>
+			</div>
+			<div id="LangTable"><a href="/login" id="aa"></a>
+			</div>
+		</div>
+			</center>
+			
+
+</body>
+</html>

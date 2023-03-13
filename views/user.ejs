@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link rel="stylesheet" href="mystyle.css" />
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="mystyle.css" />
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style>
+  html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
+  </style>
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+
+<body style="text-align: center;">
+   <!-- Top container -->
+<div class="w3-bar w3-top w3-black w3-large" style="z-index:4">
+  <button class="w3-bar-item w3-button w3-hide-large w3-hover-none w3-hover-text-light-grey" onclick="w3_open();"><i class="fa fa-bars"></i>  Menu</button>
+  <span class="w3-bar-item w3-right"><div class="abc">
+    <a href="/logout">Logout</a>
+  </div></span>
+</div>
+
+<!-- Sidebar/menu -->
+<nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:300px;" id="mySidebar"><br>
+  <div class="w3-container w3-row">
+    <div class="w3-col s4">
+      <img src="/w3images/avatar2.png" class="w3-circle w3-margin-right" style="width:46px">
+    </div>
+    <div class="w3-col s8 w3-bar">
+      <span>Welcome</span><br>
+      <a href="#" class="w3-bar-item w3-button"><i class="fa fa-envelope"></i></a>
+      <a href="#" class="w3-bar-item w3-button"><i class="fa fa-user"></i></a>
+      <a href="#" class="w3-bar-item w3-button"><i class="fa fa-cog"></i></a>
+    </div>
+  </div>
+  <hr>
+  <div class="w3-container">
+    <h5>Dashboard</h5>
+  </div>
+  <div class="w3-bar-block">
+    <a href="#" class="w3-bar-item w3-button w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black" onclick="w3_close()" title="close menu"><i class="fa fa-remove fa-fw"></i>  Close Menu</a>
+    <a href="/profile" class="w3-bar-item w3-button w3-padding w3-blue"><i class="fa fa-users fa-fw"></i>  profile</a>
+    <a href="/add_user" class="w3-bar-item w3-button w3-padding"><i class="fa fa-eye fa-fw"></i>  project submission</a>
+    <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bank fa-fw"></i>  General</a>
+    <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-history fa-fw"></i>  History</a>
+    <a href="/forgetpass" class="w3-bar-item w3-button w3-padding"><i class="fa fa-cog fa-fw"></i>  Settings</a><br><br>
+  </div>
+</nav>
+
+
+<!-- Overlay effect when opening sidebar on small screens -->
+<div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+<!-- !PAGE CONTENT! -->
+<div class="w3-main" style="margin-left:300px;margin-top:43px;">
+
+  <!-- Header -->
+  <header class="w3-container" style="padding-top:22px">
+    <h5><b><i class="fa fa-dashboard"></i> My Dashboard</b></h5>
+  </header>
+  <body>
+    <div class="container">
+      <div class="row" style="margin-top: 20px;">
+        <div style="text-align: center;">
+          <div class="col-lg-12">
+            <div class="caption">
+              <h1>PROJECT</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row" style="margin-bottom: 30px; ">
+        <div style="text-align: center;">
+          
+          <div class="caption">
+            <form action="/products" method="POST">
+              <input type="hidden" name="page" id="page" value="1">
+              <div class="form-group col-lg-12">
+                <div class="col-lg-3" style="display: flex;">
+                  <label for="sel1" style="margin-top: 5px; margin-right: 5px;">Order By : </label>
+                  <select class="form-control" name="select" style="width: 100px !important;">
+                    <% if(sort=="department" ) { %>
+                      <option value="id">ID</option>
+                      <option value="name">Name</option>
+                      <option value="department" selected>department</option>
+                      <% } else if(sort=="name" ) { %>
+                        <option value="id">ID</option>
+                        <option value="name" selected>Name</option>
+                        <option value="department">department</option>
+                        <% } else{ %>
+                          <option value="id" selected>ID</option>
+                          <option value="name">Name</option>
+                          <option value="department">department</option>
+                          <% } %>
+                  </select>
+                </div>
+  
+                <div class="col-lg-5" style="display: flex;">
+                  <label for="sel1" style="margin-top: 5px; margin-right: 5px;">Search By : </label>
+                  <select class="form-control" name="search" style="width: 100px !important;">
+                    <% if(search=="department" ) { %>
+                      <option value="id">ID</option>
+                      <option value="name">Name</option>
+                      <option value="title">title</option>
+                      <option value="abstruct">abstruct</option>
+                      <option value="department" selected>department</option>
+                      <% } else if(search=="name" ) { %>
+                        <option value="id">ID</option>
+                        <option value="name" selected>Name</option>
+                        <option value="title">title</option>
+                        <option value="abstruct">abstruct</option>
+                        <option value="department">department</option>
+                        <% } else if(search=="abstruct" ) { %>
+                          <option value="id">ID</option>
+                          <option value="name">Name</option>
+                          <option value="title">title</option>
+                          <option value="abstruct" selected>abstruct</option>
+                          <option value="department">department</option>
+                          <% } else if(search=="title" ) { %>
+                            <option value="id">ID</option>
+                            <option value="name">Name</option>
+                            <option value="title" selected>title</option>
+                            <option value="abstruct">abstruct</option>
+                            <option value="department">department</option>
+                            <% } else { %>
+                              <option value="id" selected>ID</option>
+                              <option value="name">Name</option>
+                              <option value="title">title</option>
+                              <option value="abstruct">abstruct</option>
+                              <option value="department">department</option>
+                              <% } %>
+                  </select>&nbsp;&nbsp;
+                  <input class="form-control" type="text" name="search_field" style="width: 250px !important;">
+                </div>
+  
+                <div class="col-lg-3" style="display: flex;">
+                  <label for="sel1" style="margin-top: 5px; margin-right: 5px;">Page Size : </label>
+                  <input class="form-control" type="number" min="1" step="1" value="<%=perPage%>" name="perPage"
+                    style="width: 100px !important;">
+                </div>
+                <div class="col-lg-1" style="float: right;">
+                  <input class="btn btn-success btn-sm" type="submit" id="submit">
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+  
+      <div class="row">
+  
+        <div class="col-lg-12">
+          <div class="thumbnail">
+            <div class="caption">
+              <table class="table table-hover table-dark">
+                <thead>
+                  <tr class="bg-primary">
+                    <td scope="col">ID
+                    </td>
+                    <td scope="col">USERNAME
+                    </td>
+                    <td scope="col">DEPARTMENT
+                    </td>
+                    <td scope="col">TITLE
+                    </td>
+                    <td scope="col">ABSTRUCT
+                    </td>
+                    <td scope="col">DATE
+                    </td>
+                  </tr>
+                </thead>
+                <% for (var i=0; i < project.length; i++) { %>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <%= project[i].id %>
+                      </td>
+                      <td>
+                        <%= project[i].name %>
+                      </td>
+                      <td>
+                        <%= project[i].department %>
+                      </td>
+                      <td>
+                        <%= project[i].title %>
+                      </td>
+                      <td>
+                        <%= project[i].abstruct %>
+                      </td>
+                      <td>
+                        <%= moment(project[i].date).format("DD MMM 'YY") %></br><%= moment(project[i].date).format("hh:mm a") %>
+                              </td>
+                          </tr>
+                      </tbody>
+                      <% } %>
+                  </table>
+              </div>
+          </div>
+      </div>
+  
+  </div>
+  
+  <% if (pages > 0) { %>
+  <ul class="pagination text-center">
+      <% if (current == 1) { %>
+      <li class="disabled"><a>First</a></li>
+      <% } else { %>
+      <li ><a href="#" id="First" onclick="First(1)">First</a></li>
+      <% } %>
+  
+      <% if (Number(current) - 1 > 0) { %>
+      <li><a href="#" onclick="First(<%= Number(current) - 1 %>)">Prev</a></li>
+      <% } else { %>
+      <li class="disabled"><a>Prev</a></li>
+      <% } %>
+  
+      <% var i = (Number(current) > 5 ? Number(current) - 4 : 1) %>
+  
+      <% if (i !== 1) { %>
+      <li class="disabled"><a>...</a></li>
+      <% } %>
+  
+      <% for (; i <= (Number(current) + 4) && i <= pages; i++) { %>
+  
+      <% if (i == current) { %>
+      <li class="active"><a><%= i %></a></li>
+      <% } else { %>
+      <li id="pages"><a href="#" onclick="First(<%= i %>)" ><%= i %></a></li>
+      <% } %>
+  
+      <% if (i == Number(current) + 4 && i < pages) { %>
+      <li class="disabled"><a>...</a></li>
+      <% } %>
+      <% } %>
+  
+      <% if (Number(current) + 1 <= pages) { %>
+      <li><a href="#" onclick="First(<%= Number(current) + 1 %>)">Next</a></li>
+      <% } else { %>
+      <li class="disabled"><a>Next</a></li>
+      <% } %>
+  
+      <% if (current == pages) { %>
+      <li class="disabled"><a>Last</a></li>
+      <% } else { %>
+      <li><a href="#" onclick="First(<%=pages%>)">Last</a></li>
+      <% } %>
+  </ul>
+  <% } %>
+  
+  
+  <div class="row">
+      <div style="text-align: center;">
+          <div class="col-lg-12">
+              <a href="/add_user" class="btn btn-primary btn-lg">Submit New project</a>
+          </div>
+      </div>
+  </div>
+  </div>
+  
+  </body>
+  <!-- Footer -->
+  <footer class="w3-container w3-padding-16 w3-light-grey">
+    <div class="abc">
+      <a href="/logout">Logout</a>
+    </div>
+   </footer>
+
+  <!-- End page content -->
+</div>
+
+
+
+<script>
+// Get the Sidebar
+var mySidebar = document.getElementById("mySidebar");
+
+// Get the DIV with overlay effect
+var overlayBg = document.getElementById("myOverlay");
+
+// Toggle between showing and hiding the sidebar, and add overlay effect
+function w3_open() {
+  if (mySidebar.style.display === 'block') {
+    mySidebar.style.display = 'none';
+    overlayBg.style.display = "none";
+  } else {
+    mySidebar.style.display = 'block';
+    overlayBg.style.display = "block";
+  }
+}
+
+// Close the sidebar with the close button
+function w3_close() {
+  mySidebar.style.display = "none";
+  overlayBg.style.display = "none";
+}
+</script>
+</body>
+<script type="text/javascript">
+  function First(a) {
+    document.getElementById("page").value = a;
+    let button = document.getElementById('submit'); button.click();
+  }</script>
+
+</html>
