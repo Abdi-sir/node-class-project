@@ -1,4 +1,4 @@
-# class-project-using node
+# simple website that using node 
 # it includes search , login and register authentication and authorization 
 #  
 #Below noted things you need to install the software
@@ -23,8 +23,8 @@ nodemon server.js
 Code is Running on
 
 http://localhost:3000/
-#
-# to start 
-# npm init
-# npm start
-# npm i
+
+  to start 
+  npm init
+  npm start
+  npm i
