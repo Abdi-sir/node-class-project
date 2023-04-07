@@ -1,4 +1,4 @@
-# simple website that using node 
+# simple website using node 
 # it includes search , login and register authentication and authorization 
 #  
 #Below noted things you need to install the software
